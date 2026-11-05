@@ -1,0 +1,150 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+@import '@fontsource/press-start-2p';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-pixel: 'Press Start 2P', ui-monospace, monospace;
+  --color-ink: #132238;
+  --color-navy: #0b1324;
+  --color-navy-2: #121c31;
+  --color-navy-3: #1a2742;
+  --color-brand: #1771e6;
+  --color-teal: #00a69a;
+  --color-coin: #f6c23e;
+  --color-retro: #3b2fbf;
+  --shadow-soft: 0 1px 2px rgb(16 24 40 / 0.04), 0 8px 24px -6px rgb(16 24 40 / 0.08);
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition active:scale-[.98] disabled:pointer-events-none disabled:opacity-50;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    font-feature-settings: 'tnum' 1, 'cv11' 1;
+  }
+  body {
+    @apply bg-slate-50 text-ink antialiased dark:bg-navy dark:text-slate-100;
+    min-height: 100dvh;
+  }
+  input,
+  select,
+  textarea {
+    font-size: 16px; /* evita zoom automático en iPhone */
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-slate-200/70 bg-white shadow-soft dark:border-white/5 dark:bg-navy-2;
+  }
+  .input {
+    @apply w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-[15px] text-ink placeholder:text-slate-400
+      transition focus:border-brand focus:ring-4 focus:ring-brand/15 focus:outline-none
+      dark:border-white/10 dark:bg-navy-3 dark:text-slate-100 dark:placeholder:text-slate-500;
+  }
+  .label {
+    @apply mb-1.5 block text-[13px] font-medium text-slate-600 dark:text-slate-300;
+  }
+  .btn-primary {
+    @apply btn bg-brand text-white shadow-sm shadow-brand/30 hover:bg-blue-600;
+  }
+  .btn-secondary {
+    @apply btn border border-slate-200 bg-white text-ink hover:bg-slate-50 dark:border-white/10 dark:bg-navy-3 dark:text-slate-100 dark:hover:bg-white/10;
+  }
+  .btn-ghost {
+    @apply btn text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/5;
+  }
+  .btn-danger {
+    @apply btn bg-red-500 text-white hover:bg-red-600;
+  }
+  .muted {
+    @apply text-slate-500 dark:text-slate-400;
+  }
+  .amount {
+    font-variant-numeric: tabular-nums;
+    @apply font-semibold tracking-tight;
+  }
+
+  /* ---------- Estilo retro del tutor ---------- */
+  .pixel-box {
+    @apply relative bg-[#11183a] text-white;
+    border: 4px solid #fff;
+    box-shadow:
+      0 0 0 4px #11183a,
+      0 0 0 8px #6c5ce7,
+      0 12px 0 8px rgb(0 0 0 / 0.35);
+    image-rendering: pixelated;
+  }
+  .pixel-btn {
+    @apply font-pixel inline-flex items-center gap-2 px-3 py-2.5 text-[10px] leading-none uppercase text-white transition;
+    background: #6c5ce7;
+    box-shadow:
+      inset -3px -3px 0 rgb(0 0 0 / 0.35),
+      inset 3px 3px 0 rgb(255 255 255 / 0.25);
+  }
+  .pixel-btn:hover {
+    filter: brightness(1.1);
+  }
+  .pixel-btn:active {
+    transform: translateY(2px);
+    box-shadow: inset 3px 3px 0 rgb(0 0 0 / 0.35);
+  }
+  .pixel-btn-gold {
+    background: #f6c23e;
+    @apply text-[#11183a];
+  }
+  .pixelated {
+    image-rendering: pixelated;
+  }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes pop-in {
+  0% { transform: scale(.85) translateY(8px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes coin {
+  0% { transform: translateY(0) rotateY(0); opacity: 1; }
+  100% { transform: translateY(-60px) rotateY(720deg); opacity: 0; }
+}
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgb(246 194 62 / .8); }
+  100% { box-shadow: 0 0 0 14px rgb(246 194 62 / 0); }
+}
+.animate-bob { animation: bob 1.6s ease-in-out infinite; }
+.animate-blink { animation: blink 1s steps(1) infinite; }
+.animate-pop { animation: pop-in .25s cubic-bezier(.2,.9,.3,1.2) both; }
+.animate-slide-up { animation: slide-up .28s cubic-bezier(.2,.9,.3,1) both; }
+.animate-fade { animation: fade-in .2s ease both; }
+.animate-coin { animation: coin .9s ease-out forwards; }
+.animate-ring { animation: pulse-ring 1.2s ease-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-bob, .animate-coin, .animate-ring { animation: none; }
+}
+
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+.safe-top { padding-top: env(safe-area-inset-top); }
