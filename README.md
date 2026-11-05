@@ -2,6 +2,12 @@
 
 PWA de finanzas personales con tutor estilo videojuego (**Mini Cris**). Cada usuario empieza en $0, sin datos de ejemplo.
 
+**En línea:** https://minicris.santicris232.workers.dev
+
+## Despliegue
+
+Cloudflare Workers (`minicris`) está conectado a este repo: cada push a `main` ejecuta `npm run build` y `npx wrangler deploy` y publica solo. La configuración pública de Supabase está en `.env.production`.
+
 ## Uso rápido
 
 ```bash
@@ -22,11 +28,11 @@ Sin configuración, la app corre en **modo local**: las cuentas y los datos se g
 
 ## Estructura
 
-- `src/lib/calc/` – lógica financiera pura y probada (presupuesto, quincenas, deudas, compras, metas, simulador, freelance).
+- `src/lib/calc/` – lógica financiera pura y probada (presupuesto, quincenas, deudas, compras, metas, simulador, ingresos extra).
 - `src/data/repo.ts` – repositorio con dos implementaciones: Supabase y local.
 - `src/store/` – estado (Zustand): sesión, datos, UI.
 - `src/tutor/` – tutorial guiado (misiones, resaltado, diálogo retro) y consejos por pantalla.
-- `src/pages/` – Inicio, Movimientos, Quincena, Deudas, Compras, Metas, Freelance, Simulador, Perfil.
+- `src/pages/` – Inicio, Movimientos, Quincena, Deudas, Compras, Metas, Ingresos extra, Simulador, Perfil.
 
 ## Reglas de negocio clave
 
