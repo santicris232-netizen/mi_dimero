@@ -76,7 +76,7 @@ function ProjectForm({ editing, onClose }: { editing: FreelanceProject | null; o
   );
 
   return (
-    <Modal open onClose={onClose} title={editing ? 'Editar proyecto' : 'Nuevo proyecto freelance'} wide>
+    <Modal open onClose={onClose} title={editing ? 'Editar ingreso extra' : 'Nuevo ingreso extra'} wide>
       <form onSubmit={handleSubmit(submit)} className="space-y-4">
         <div className="grid gap-3 sm:grid-cols-2">
           <Field label="Cliente" error={formState.errors.client?.message}><Input {...register('client')} /></Field>
@@ -154,7 +154,7 @@ function PaymentModal({ project, onClose }: { project: FreelanceProject; onClose
               const receivedTotal = project.receivedTotal + amount;
               await patch('freelanceProjects', project.id, { receivedTotal, ...(receivedTotal >= project.contractValue ? { status: 'pagado' as const } : {}) });
               await addTransaction({ kind: 'ingreso', amount, occurredOn: date, category: 'freelance', description: `Pago: ${project.project}`, refTable: 'freelance_projects', refId: project.id });
-              toast(`+${formatCOP(amount)} de ingreso freelance 💪`);
+              toast(`+${formatCOP(amount)} de ingreso extra 💪`);
               onClose();
             } finally {
               setBusy(false);
@@ -178,9 +178,9 @@ export default function Freelance() {
   return (
     <div>
       <PageHeader
-        title="Ingresos freelance"
-        subtitle="Tus proyectos de programación y cómo los repartes"
-        action={<button className="btn-primary" data-tour="freelance-add" onClick={() => setForm({ open: true, editing: null })}><Plus size={18} /> <span className="hidden sm:inline">Nuevo proyecto</span><span className="sm:hidden">Nuevo</span></button>}
+        title="Ingresos extra"
+        subtitle="Trabajos y proyectos adicionales, y cómo repartes lo que ganas"
+        action={<button className="btn-primary" data-tour="freelance-add" onClick={() => setForm({ open: true, editing: null })}><Plus size={18} /> <span className="hidden sm:inline">Nuevo ingreso extra</span><span className="sm:hidden">Nuevo</span></button>}
       />
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <Stat label="Contratado" value={<Money value={t.contracted} />} />
@@ -191,7 +191,7 @@ export default function Freelance() {
 
       <div className="mt-5 space-y-3">
         {projects.length === 0 ? (
-          <Empty title="Sin proyectos todavía" text="Registra tus trabajos extra y decide qué porcentaje va a deudas, ahorro y gustos." />
+          <Empty title="Sin proyectos todavía" text="Registra tus trabajos o proyectos adicionales y decide qué porcentaje va a deudas, ahorro y gustos." />
         ) : (
           projects.map((p) => {
             const s = freelanceSummary(p);

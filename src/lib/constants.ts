@@ -26,7 +26,7 @@ const SPECIAL: Record<string, string> = {
   deudas: 'Pago de deudas',
   ahorro: 'Ahorro',
   salario: 'Salario',
-  freelance: 'Freelance',
+  freelance: 'Trabajo extra',
   ingreso_extra: 'Ingreso extra',
   prima: 'Prima',
 };
@@ -40,7 +40,7 @@ export function categoryColor(slug: string, custom: ExpenseCategory[] = []): str
 
 export const INCOME_CATEGORIES = [
   { slug: 'salario', label: 'Salario' },
-  { slug: 'freelance', label: 'Freelance' },
+  { slug: 'freelance', label: 'Trabajo extra' },
   { slug: 'prima', label: 'Prima' },
   { slug: 'ingreso_extra', label: 'Ingreso extra' },
 ];

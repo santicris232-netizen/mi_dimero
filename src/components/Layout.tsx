@@ -20,7 +20,7 @@ const MAIN = [
 const TOOLS = [
   { to: '/quincena', label: 'Distribuir quincena', icon: CalendarRange },
   { to: '/compras', label: '¿Lo necesito?', icon: ShoppingBag },
-  { to: '/freelance', label: 'Freelance', icon: Briefcase },
+  { to: '/ingresos-extra', label: 'Ingresos extra', icon: Briefcase },
   { to: '/simulador', label: 'Simulador', icon: LineChart },
 ];
 

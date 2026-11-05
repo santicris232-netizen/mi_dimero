@@ -94,7 +94,8 @@ function AuthedApp() {
             <Route path="deudas/:id" element={<DeudaDetalle />} />
             <Route path="compras" element={<Compras />} />
             <Route path="metas" element={<Metas />} />
-            <Route path="freelance" element={<Freelance />} />
+            <Route path="ingresos-extra" element={<Freelance />} />
+            <Route path="freelance" element={<Navigate to="/ingresos-extra" replace />} />
             <Route path="simulador" element={<Simulador />} />
             <Route path="perfil" element={<Perfil />} />
             <Route path="*" element={<Navigate to="/" replace />} />

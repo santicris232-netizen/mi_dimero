@@ -24,7 +24,7 @@ export const TUTORIAL: TutorStep[] = [
     route: '/',
     target: 'quick-actions',
     title: 'Atajos',
-    text: () => 'Estos atajos te llevan directo a las herramientas más poderosas: distribuir tu quincena, el detector de antojos, freelance y el simulador.',
+    text: () => 'Estos atajos te llevan directo a las herramientas más poderosas: distribuir tu quincena, el detector de antojos, ingresos extra y el simulador.',
     reward: '+10 XP',
   },
   {
@@ -77,7 +77,7 @@ export const TUTORIAL: TutorStep[] = [
     reward: '+20 XP',
   },
   {
-    route: '/freelance',
+    route: '/ingresos-extra',
     target: 'freelance-add',
     title: 'Ingresos extra',
     text: () => '¿Haces trabajos por tu cuenta? Registra cliente, valor, anticipo y gastos. Decide qué porcentaje va a deudas, ahorro y gustos, ¡y deja que cada proyecto te acerque a tus metas!',
@@ -114,7 +114,7 @@ export const PAGE_TIPS: Record<string, string> = {
   '/deudas': 'Toca una deuda para registrar abonos, subir comprobantes o simular una negociación. Actualiza el saldo cuando la entidad te lo confirme.',
   '/compras': 'Un gusto planeado no es malo. Lo importante es que no afecte tus deudas ni tu ahorro. La espera de 48 horas te ayuda a decidir con calma.',
   '/metas': 'Si el aporte mensual es menor que el "necesario", ajusta el aporte o la fecha. Registra cada aporte para ver crecer tu barra.',
-  '/freelance': 'Cuando un cliente te pague, usa "Registrar pago". Se suma a tus ingresos y verás cómo repartirlo según tus porcentajes.',
+  '/ingresos-extra': 'Cuando te paguen un trabajo extra te pague, usa "Registrar pago". Se suma a tus ingresos y verás cómo repartirlo según tus porcentajes.',
   '/simulador': 'Las tasas de interés solo se aplican si las registraste en cada deuda. Si no las conoces, la simulación lo indica.',
   '/perfil': 'Exporta una copia de seguridad cada mes. Puedes importarla en cualquier momento para restaurar tus datos.',
 };

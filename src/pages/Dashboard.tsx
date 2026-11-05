@@ -120,7 +120,7 @@ export default function Dashboard() {
         {[
           { to: '/quincena', label: 'Distribuir mi quincena', icon: CalendarRange, color: '#1771e6', primary: true },
           { to: '/compras', label: '¿Realmente lo necesito?', icon: ShoppingBag, color: '#14b8a6' },
-          { to: '/freelance', label: 'Ingresos freelance', icon: Briefcase, color: '#f59e0b' },
+          { to: '/ingresos-extra', label: 'Ingresos extra', icon: Briefcase, color: '#f59e0b' },
           { to: '/simulador', label: 'Simulador', icon: LineChart, color: '#8b5cf6' },
         ].map((a) => (
           <Link key={a.to} to={a.to} className={cx('card group flex items-center gap-3 p-3.5 transition hover:-translate-y-0.5 hover:shadow-md', a.primary && '!border-brand/30 bg-brand/[.04] dark:bg-brand/10')}>
