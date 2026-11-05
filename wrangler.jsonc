@@ -1,0 +1,11 @@
+{
+  // Cloudflare Workers (assets estáticos). La app usa HashRouter, no requiere fallback SPA.
+  "name": "minicris",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./build",
+    "not_found_handling": "single-page-application"
+  },
+  "workers_dev": true,
+  "preview_urls": false
+}

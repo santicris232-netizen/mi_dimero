@@ -295,7 +295,6 @@ begin
   loop
     execute format('create trigger set_updated_at before update on public.%I for each row execute function public.set_updated_at()', t);
     execute format('alter table public.%I enable row level security', t);
-    execute format('alter table public.%I force row level security', t);
   end loop;
 
   foreach t in array array['accounts','income','expense_categories','expenses','debts','debt_payments',
@@ -308,6 +307,11 @@ begin
     execute format('create policy "%s_delete_own" on public.%I for delete to authenticated using (user_id = (select auth.uid()))', t, t);
   end loop;
 end $$;
+
+-- Permisos de API: solo usuarios autenticados (las filas siguen filtradas por RLS). anon no accede a nada.
+grant usage on schema public to authenticated;
+grant select, insert, update, delete on all tables in schema public to authenticated;
+revoke all on all tables in schema public from anon;
 
 create policy "profiles_select_own" on public.profiles for select to authenticated using (id = (select auth.uid()));
 create policy "profiles_insert_own" on public.profiles for insert to authenticated with check (id = (select auth.uid()));
